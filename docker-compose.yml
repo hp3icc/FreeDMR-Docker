@@ -91,6 +91,7 @@ services:
             - './hbmon:/hbmon'
         ports:
             - '9000:9000'
+            - '62031:62031/udp'
         depends_on:
             - 'freedmr'
             - 'mariadb'

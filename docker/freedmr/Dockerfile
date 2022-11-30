@@ -17,19 +17,19 @@
 ###############################################################################
 FROM python:3.10-alpine
 
-RUN adduser -D -u 54000 radio && \
+RUN adduser -D -u 54000 hbmon && \
         apk update && \
         apk add git gcc musl-dev mariadb-connector-c-dev && \
         cd /opt && \
         git clone https://gitlab.hacknix.net/hacknix/FreeDMR.git freedmr && \
         cd /opt/freedmr && \
         pip install --no-cache-dir -r requirements.txt && \
-#        pip install mysqlclient && \
+        pip install mysqlclient && \
         apk del git gcc musl-dev && \
-        chown -R radio: /opt/freedmr
+        chown -R hbmon: /opt/freedmr
 
 COPY entrypoint-proxy /entrypoint
 
-USER radio
+USER hbmon
 
 ENTRYPOINT [ "/entrypoint" ]

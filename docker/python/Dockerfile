@@ -20,7 +20,7 @@ FROM python:3.7-alpine
 
 COPY entrypoint /entrypoint
 
-RUN adduser -D -u 54000 radio
+RUN adduser -D -u hbmon hbmon
 RUN	apk update && \
 	apk add git gcc musl-dev libffi-dev libressl-dev cargo mariadb-connector-c-dev && \
 	git clone https://github.com/yuvelq/FDMR-Monitor.git /hbmon && \
@@ -28,8 +28,8 @@ RUN	apk update && \
 	git checkout Self_Service && \
 	pip install --no-cache-dir -r requirements.txt && \
 	apk del git gcc musl-dev && \
-	chown -R radio /hbmon
+	chown -R hbmon /hbmon
 
-USER radio
+USER hbmon
 
 ENTRYPOINT [ "/entrypoint" ]

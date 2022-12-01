@@ -17,7 +17,7 @@
 ###############################################################################
 FROM python:3.10-alpine
 
-RUN adduser -D -u 54000 hbmon && \
+RUN adduser -D -u radio radio
         apk update && \
         apk add git gcc musl-dev mariadb-connector-c-dev && \
         cd /opt && \
@@ -26,10 +26,10 @@ RUN adduser -D -u 54000 hbmon && \
         pip install --no-cache-dir -r requirements.txt && \
         pip install mysqlclient && \
         apk del git gcc musl-dev && \
-        chown -R hbmon: /opt/freedmr
+        chown -R radio: /opt/freedmr
 
 COPY entrypoint-proxy /entrypoint
 
-USER hbmon
+USER radio
 
 ENTRYPOINT [ "/entrypoint" ]

@@ -305,6 +305,9 @@ cat > /bin/start-fdmr <<- "EOF"
 cd /etc/freedmr
 docker-compose down
 docker-compose up -d
+systemctl stop proxy2
+systemctl start proxy2
+systemctl enable proxy2
 
 EOF
 #
@@ -312,6 +315,8 @@ cat > /bin/stop-fdmr <<- "EOF"
 #!/bin/bash
 cd /etc/freedmr
 docker-compose down
+systemctl stop proxy2
+systemctl disable proxy2
 
 EOF
 ###############################################

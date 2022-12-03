@@ -233,11 +233,11 @@ sudo sed -i "s/62031/54000-54100/g"  docker-compose.yml
 apt install python3 python3-pip -y
 mkdir /etc/freedmr/proxy2
 
-wget /etc/freedmr/proxy2/hotspot_proxy_v2.py https://raw.githubusercontent.com/yuvelq/FDMR-Monitor/Self_Service/proxy/hotspot_proxy_v2.py
+wget /etc/freedmr/proxy2/hotspot_proxy_v2.py https://raw.githubusercontent.com/yuvelq/FDMR-Monitor/Self_Service/proxy/hotspot_proxy_v2.py -O
 
-wget /etc/freedmr/proxy2/proxy.cfg https://raw.githubusercontent.com/yuvelq/FDMR-Monitor/Self_Service/proxy/proxy.cfg
+wget /etc/freedmr/proxy2/proxy.cfg https://raw.githubusercontent.com/yuvelq/FDMR-Monitor/Self_Service/proxy/proxy.cfg -O
 
-wget /etc/freedmr/proxy2/proxy_db.py https://raw.githubusercontent.com/yuvelq/FDMR-Monitor/Self_Service/proxy/proxy_db.py
+wget /etc/freedmr/proxy2/proxy_db.py https://raw.githubusercontent.com/yuvelq/FDMR-Monitor/Self_Service/proxy/proxy_db.py -O
 chmod +x *
 sudo cat > /etc/freedmr/proxy2/requirements.txt <<- "EOF"
 setproctitle

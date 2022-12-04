@@ -246,6 +246,7 @@ dmr_utils3
 
 EOF
 pip3 install -r /etc/freedmr/proxy2/requirements.txt
+sudo sed -i "s/MASTER = 127.0.0.1/MASTER = 172.16.238.10/g"  /etc/freedmr/proxy2/proxy.cfg 
 sudo sed -i "s/USE_SELFSERVICE = True/USE_SELFSERVICE = False/g"  /etc/freedmr/proxy2/proxy.cfg 
      
 sudo cat > /lib/systemd/system/proxy2.service <<- "EOF"

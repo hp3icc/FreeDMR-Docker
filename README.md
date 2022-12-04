@@ -7,6 +7,9 @@ is an excerpt from the emq-TE1ws proyect, focused on new and current sysops who 
 this shell, install FreeDMR Server and FDMR-Monitor
 
 #
+# Important note , this is an experimental modified script with no support ! if you require support , refer to the original developer script :
+
+https://gitlab.hacknix.net/hacknix/FreeDMR/-/wikis/Installing-using-Docker-(recommended!)
 
 FreeDMR Server original version gitlab FreeDMR by G7RZU hacknix Simon.
 

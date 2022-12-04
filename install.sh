@@ -238,7 +238,7 @@ wget /etc/freedmr/proxy2/hotspot_proxy_v2.py https://raw.githubusercontent.com/y
 wget /etc/freedmr/proxy2/proxy.cfg https://raw.githubusercontent.com/yuvelq/FDMR-Monitor/Self_Service/proxy/proxy.cfg -O
 
 wget /etc/freedmr/proxy2/proxy_db.py https://raw.githubusercontent.com/yuvelq/FDMR-Monitor/Self_Service/proxy/proxy_db.py -O
-chmod +x *
+chmod +x /etc/freedmr/proxy2/*
 sudo cat > /etc/freedmr/proxy2/requirements.txt <<- "EOF"
 setproctitle
 Twisted

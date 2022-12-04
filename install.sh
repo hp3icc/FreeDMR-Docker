@@ -227,7 +227,8 @@ echo Get docker-compose.yml...
 cd /etc/freedmr &&
 curl https://gitlab.hacknix.net/hacknix/FreeDMR/-/raw/master/docker-configs/docker-compose.yml -o docker-compose.yml &&
 ##########
-sudo sed -i "s/62031/54000-54100/g"  docker-compose.yml
+#sudo sed -i "s/62031/54000-54100/g"  docker-compose.yml
+sudo sed -i "s/- '62031/#- '62031/g"  docker-compose.yml
 #########################################################
 
 apt install python3 python3-pip -y

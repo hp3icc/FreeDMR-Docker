@@ -3,7 +3,7 @@
 sudo cat > /bin/menu-update <<- "EOF"
 #!/bin/bash
 while : ; do
-choix=$(whiptail --title "Raspbian Proyect HP3ICC EasyFreeDMR Menu Update" --menu "move up or down with the keyboard arrows and select your option by pressing enter:" 15 56 6 \
+choix=$(whiptail --title "Raspbian Proyect HP3ICC FreeDMR-Docker Menu Update" --menu "move up or down with the keyboard arrows and select your option by pressing enter:" 15 56 6 \
 1 " Update FreeDMR Server " \
 2 " Main menu " 3>&1 1>&2 2>&3)
 exitstatus=$?
@@ -32,9 +32,9 @@ EOF
 sudo cat > /bin/update-fdmr <<- "EOF"
 #!/bin/bash
 cd /etc/freedmr
-docker compose down
-docker compose pull
-docker compose up -d
+docker-compose down
+docker-compose pull
+docker-compose up -d
 EOF
 #
 ########################

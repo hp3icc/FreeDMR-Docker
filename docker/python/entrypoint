@@ -1,7 +1,0 @@
-#!/bin/sh
-
-cd /hbmon
-python /hbmon/monitor.py
-cd /proxy
-python /hbmon/proxy/hotspot_proxy_v2.py -c /hbmon/proxy/proxy.cfg
-

@@ -227,7 +227,7 @@ echo Get docker-compose.yml...
 cd /etc/freedmr &&
 curl https://gitlab.hacknix.net/hacknix/FreeDMR/-/raw/master/docker-configs/docker-compose.yml -o docker-compose.yml &&
 ##########
-sudo sed -i "s/62031/54000-54100/g"  docker-compose.yml
+sudo sed -i "s/- '62031/#- '62031/g"  docker-compose.yml
 #########################################################
 
 apt install python3 python3-pip -y
@@ -246,7 +246,6 @@ dmr_utils3
 
 EOF
 pip3 install -r /etc/freedmr/proxy2/requirements.txt
-sudo sed -i "s/MASTER = 127.0.0.1/MASTER = 172.16.238.10/g"  /etc/freedmr/proxy2/proxy.cfg 
 sudo sed -i "s/USE_SELFSERVICE = True/USE_SELFSERVICE = False/g"  /etc/freedmr/proxy2/proxy.cfg 
      
 sudo cat > /lib/systemd/system/proxy2.service <<- "EOF"

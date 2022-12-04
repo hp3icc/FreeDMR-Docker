@@ -24,7 +24,7 @@ into your ssh terminal copy and paste the following link :
 
     apt-get update
     apt-get install curl sudo -y
-
+#
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/hp3icc/FreeDMR-Docker/main/install.sh)"
              
              

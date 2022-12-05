@@ -227,46 +227,7 @@ echo Get docker-compose.yml...
 cd /etc/freedmr &&
 curl https://gitlab.hacknix.net/hacknix/FreeDMR/-/raw/master/docker-configs/docker-compose.yml -o docker-compose.yml &&
 ##########
-#sudo sed -i "s/62031/54000-54100/g"  docker-compose.yml
-sudo sed -i "s/- '62031/#- '62031/g"  docker-compose.yml
-#########################################################
 
-apt install python3 python3-pip -y
-mkdir /etc/freedmr/proxy2
-
-wget /etc/freedmr/proxy2/hotspot_proxy_v2.py https://raw.githubusercontent.com/yuvelq/FDMR-Monitor/Self_Service/proxy/hotspot_proxy_v2.py -O
-
-wget /etc/freedmr/proxy2/proxy.cfg https://raw.githubusercontent.com/yuvelq/FDMR-Monitor/Self_Service/proxy/proxy.cfg -O
-
-wget /etc/freedmr/proxy2/proxy_db.py https://raw.githubusercontent.com/yuvelq/FDMR-Monitor/Self_Service/proxy/proxy_db.py -O
-chmod +x /etc/freedmr/proxy2/*
-sudo cat > /etc/freedmr/proxy2/requirements.txt <<- "EOF"
-setproctitle
-Twisted
-dmr_utils3
-
-EOF
-pip3 install -r /etc/freedmr/proxy2/requirements.txt
-sudo sed -i "s/MASTER = 127.0.0.1/MASTER = 172.16.238.10/g"  /etc/freedmr/proxy2/proxy.cfg 
-sudo sed -i "s/USE_SELFSERVICE = True/USE_SELFSERVICE = False/g"  /etc/freedmr/proxy2/proxy.cfg 
-     
-sudo cat > /lib/systemd/system/proxy2.service <<- "EOF"
-[Unit]
-Description= Proxy Service 
-After=multi-user.target
-
-[Service]
-User=root
-Type=simple
-Restart=always
-RestartSec=3
-StandardOutput=null
-ExecStart=/usr/bin/python3 /etc/freedmr/proxy2/hotspot_proxy_v2.py -c /etc/freedmr/proxy2/proxy.cfg
-
-[Install]
-WantedBy=multi-user.target
-EOF
-#
 cat > /bin/menu <<- "EOF"
 #!/bin/bash
 while : ; do
@@ -306,9 +267,7 @@ cat > /bin/start-fdmr <<- "EOF"
 cd /etc/freedmr
 docker-compose down
 docker-compose up -d
-systemctl stop proxy2
-systemctl start proxy2
-systemctl enable proxy2
+
 
 EOF
 #
@@ -316,8 +275,7 @@ cat > /bin/stop-fdmr <<- "EOF"
 #!/bin/bash
 cd /etc/freedmr
 docker-compose down
-systemctl stop proxy2
-systemctl disable proxy2
+
 
 EOF
 ###############################################
@@ -326,10 +284,6 @@ chmod +x /bin/menu*
 chmod +x /bin/MENU
 chmod +x /bin/start-fdmr
 chmod +x /bin/stop-fdmr
-
-systemctl daemon-reload
-systemctl start proxy2.service
-systemctl enable proxy2.service
 
 #########################################################
 

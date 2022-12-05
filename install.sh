@@ -231,7 +231,7 @@ curl https://gitlab.hacknix.net/hacknix/FreeDMR/-/raw/master/docker-configs/dock
 cat > /bin/menu <<- "EOF"
 #!/bin/bash
 while : ; do
-choix=$(whiptail --title "Raspbian Proyect HP3ICC EasyFreeDMR Docker Version" --menu "move up or down with the keyboard arrows and select your option by pressing enter:" 17 56 8 \
+choix=$(whiptail --title "Raspbian Proyect HP3ICC FreeDMR Docker Version G7RZU" --menu "move up or down with the keyboard arrows and select your option by pressing enter:" 17 60 8 \
 1 " Edit FreeDMR Server " \
 2 " Edit Interlink  " \
 3 " Start & Restart FreeDMR Server  " \
